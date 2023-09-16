@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
   try {
     const tagData = await Tag.create(
       {
-        tag_name:''
+        tag_name:req.body.tag_name
       },
       {
         include:{
@@ -82,7 +82,11 @@ router.put('/:id', async (req, res) => {
         }
       }
     );
-    res.status(201).json(tagData);
+    if (tagData) {
+      res.status(201).json(`tag id ${req.params.id} updated`);
+    } else {
+      res.status(404).json(`tag not found by id ${req.params.id}`);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -101,7 +105,7 @@ router.delete('/:id', async (req, res) => {
     );
     if (tagData) {
       console.log(`tag id ${req.params.id} destroyed`);
-      res.status(200).json(tagData);
+      res.status(200).json(`tag id ${req.params.id} destroyed`);
     } else {
       res.status(404).json(`tag not found by id ${req.params.id}`);
     }

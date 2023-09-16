@@ -99,8 +99,12 @@ router.delete('/:id', async (req, res) => {
         }
       }
     );
-    console.log(`tag id ${req.params.id} destroyed`);
-    res.status(200).json(tagData);
+    if (tagData) {
+      console.log(`tag id ${req.params.id} destroyed`);
+      res.status(200).json(tagData);
+    } else {
+      res.status(404).json(`tag not found by id ${req.params.id}`);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

@@ -64,8 +64,29 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
+  try {
+    const tagData = await Tag.update(
+      {
+        tag_name:req.body.tag_name
+      },
+      {
+        where:{
+          id:req.params.id
+        }
+      },
+      {
+        include:{
+          all:true
+        }
+      }
+    );
+    res.status(201).json(tagData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 router.delete('/:id', (req, res) => {

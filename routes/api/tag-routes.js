@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
         }
       }
     );
-    res.status(200).json(tagData);
+    res.status(201).json(tagData);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

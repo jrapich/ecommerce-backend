@@ -59,7 +59,10 @@ router.put('/:id', async (req, res) => {
     }
     );
     console.log(`product category name changed in db`);
-    res.status(200).json(updateCategory);
+    const categoryData = await Category.findByPk(req.params.id, {
+      include:[{model:Product}]
+    });
+    res.status(200).json(categoryData);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

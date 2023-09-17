@@ -118,25 +118,32 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
-    await Product.destroy(
+    const productTags = await ProductTag.destroy(
+      {
+        where:{
+          product_id:req.params.id
+        }
+      }
+    );
+    const productData = await Product.destroy(
       {
         where:{
           id:req.params.id
-        },
-        include:{
-          all:true
         }
-      }
-    );
-    const productData = await Product.findAll(
+      },
       {
         include:{
           all:true
         }
       }
     );
-    console.log(`request ID ${req.params.id} destroyed from db`);
-    res.status(200).json(productData);
+    if (productData && productTags) {
+      console.log(`product data id ${req.params.id} destroyed from the db`);
+      res.status(200).json(`product data id ${req.params.id} destroyed from the db`)
+    } else {
+      console.log(`product id ${req.params.id} not found`);
+      res.status(404).json(`product id ${req.params.id} not found`);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

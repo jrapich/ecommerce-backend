@@ -110,8 +110,11 @@ router.put('/:id', (req, res) => {
           ]);
         });
       }
-
+      if (product[0]) {
       return res.json(product);
+      } else {
+        return res.status(404).json(`Product id ${req.params.id} doesn't exist in db`);
+      }
     })
     .catch((err) => {
       console.log(err);

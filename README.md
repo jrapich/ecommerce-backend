@@ -50,6 +50,10 @@
   ## Credits
   no other contributors
 
+  This project uses a mojority portion of the starter code for this assignment which is located here:
+
+  [https://github.com/coding-boot-camp/fantastic-umbrella(https://github.com/coding-boot-camp/fantastic-umbrella)]
+
   Fellow student Brian Whisler pointed out this resource which helped me with understanding the Tag/ProductTag many-to-many relationship:
 
   [https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/](https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/)

@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
       },
       through:ProductTag
     });
-    res.status(200).json(tagData);
+    (tagData) ? res.status(200).json(tagData) : res.status(404).json(`No tags found in db`);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
       }
     }
     );
-    res.status(200).json(tagData);
+    (tagData) ? res.status(200).json(tagData) : res.status(404).json(`No tags with id ${req.params.id} found in db`);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -57,7 +57,7 @@ router.post('/', async (req, res) => {
         }
       }
     );
-    res.status(201).json(tagData);
+    (tagData) ? res.status(201).json(tagData) : res.status(418).json(`tag creation failed`);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -107,7 +107,7 @@ router.delete('/:id', async (req, res) => {
       console.log(`tag id ${req.params.id} destroyed`);
       res.status(200).json(`tag id ${req.params.id} destroyed`);
     } else {
-      res.status(404).json(`tag not found by id ${req.params.id}`);
+      res.status(418).json(`tag not found by id ${req.params.id}`);
     }
   } catch (err) {
     console.error(err);

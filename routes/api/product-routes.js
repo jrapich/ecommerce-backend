@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         all:true
       }
     });
-    res.status(200).json(productData);
+    (productData) ? res.status(200).json(productData) : res.status(418).json(`no products found in db`);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

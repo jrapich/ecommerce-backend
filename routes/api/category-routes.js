@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     const categoryData = await Category.findAll({
       include:[{model:Product}]
     });
-    res.status(200).json(categoryData);
+    (categoryData) ? res.status(200).json(categoryData) : res.status(418).json(`categories don't exist here`);
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
     const categoryData = await Category.findByPk(req.params.id, {
       include:[{model:Product}]
     });
-    res.status(200).json(categoryData);
+    (categoryData) ? res.status(200).json(categoryData) : res.status(404).json(`category id ${req.params.id} not found`);
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
@@ -62,7 +62,7 @@ router.put('/:id', async (req, res) => {
     const categoryData = await Category.findByPk(req.params.id, {
       include:[{model:Product}]
     });
-    res.status(200).json(categoryData);
+    (updateCategory) ? res.status(200).json(categoryData) : res.status(404).json(`category id ${req.params.id} not found`);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -72,14 +72,18 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
-    await Category.destroy({
+    const categoryData = await Category.destroy({
       where: {
         id: req.params.id
       }
-    }).then((destroyedCategory)=>{
-      console.log(` Category ${req.params.id} destroyed with prejudice from the db`);
-      res.status(200).json(destroyedCategory);
     });
+
+    if (categoryData) {
+        console.log(` Category ${req.params.id} destroyed with prejudice from the db`);
+        res.status(200).json(categoryData); 
+    } else {
+      res.status(404).json(`category id ${req.params.id} not found`);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

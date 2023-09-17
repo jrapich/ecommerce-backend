@@ -125,6 +125,10 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
+    //we have to delete the ProductTag entry first
+    //ProductTag is a join table and it has foreign keys that reference 
+    //the id in Products
+    //therefore trying to delete Products first results in a SQL error
     const productTags = await ProductTag.destroy(
       {
         where:{

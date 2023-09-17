@@ -31,7 +31,11 @@ router.get('/:id', async (req, res) => {
         all:true
       }
     });
-    res.status(200).json(productData);
+    if (productData) {
+      res.status(200).json(productData);
+    } else {
+      res.status(404).json(`Product with id ${req.params.id} not found in db`);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

@@ -80,7 +80,7 @@ router.delete('/:id', async (req, res) => {
 
     if (categoryData) {
         console.log(` Category ${req.params.id} destroyed with prejudice from the db`);
-        res.status(200).json(categoryData); 
+        res.status(200).json(` Category ${req.params.id} destroyed with prejudice from the db`); 
     } else {
       res.status(404).json(`category id ${req.params.id} not found`);
     }

@@ -29,6 +29,7 @@ router.get('/:id', async (req, res) => {
       include:{
         all:true
       },
+      //im not sure if this is needed here or not or if it is already defined in the models index
       through:ProductTag
     },
     {

@@ -43,6 +43,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
+//this is left largely the same from the starter code
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
@@ -75,6 +76,7 @@ router.post('/', (req, res) => {
 });
 
 // update product
+//this is left largely teh same from the starter code
 router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {

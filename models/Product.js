@@ -35,6 +35,7 @@ Product.init(
         isNumeric:true
       }
     },
+    //this id references the category as a foreign key
     category_id:{
       type:DataTypes.INTEGER,
       references:{

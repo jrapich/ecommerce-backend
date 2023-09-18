@@ -4,6 +4,9 @@ const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
 
+//this model is considered a 'join table' which is needed when multiple tables have many-to-many relationships with each other
+//sequelize will normally autocreate a join table, or we can create our own, which is what we are doing with this model
+
 ProductTag.init(
   {
     // define columns

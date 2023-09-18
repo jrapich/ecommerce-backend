@@ -40,7 +40,13 @@
   ## Usage
   This project is back-end only, but has functioning express routes which can be tested via Insomnia.     
   
-  insert insomnia instructions here
+  current API routes are:
+
+  `/api/categories` for GET, POST, PUT, DELETE
+
+  `/api/products` for GET, POST, PUT, DELETE
+
+  `/api/tags` for GET, POST, PUT, DELETE
 
   Link to project repository: [https://github.com/jrapich/ecommerce-backend](https://github.com/jrapich/ecommerce-backend)
 

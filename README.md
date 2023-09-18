@@ -48,6 +48,10 @@
 
   `/api/tags` for GET, POST, PUT, DELETE
 
+  Here is a link to a walkthrough video showing these routes working and their responses:
+
+  [Google Drive Video Link](https://drive.google.com/file/d/1bI80v5vgKdM-4OwZxJABPVfLmtqde2dK/view)
+
   Link to project repository: [https://github.com/jrapich/ecommerce-backend](https://github.com/jrapich/ecommerce-backend)
 
   ## Tests
@@ -56,7 +60,7 @@
   ## Credits
   no other contributors
 
-  This project uses a mojority portion of the starter code for this assignment which is located here:
+  This project uses a majority portion of the starter code for this assignment which is located here:
 
   [https://github.com/coding-boot-camp/fantastic-umbrella(https://github.com/coding-boot-camp/fantastic-umbrella)]
 
